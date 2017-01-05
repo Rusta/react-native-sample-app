@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Navigator, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default class SpursFacts extends Component {
   render() {
@@ -7,7 +7,7 @@ export default class SpursFacts extends Component {
       <View style={styles.container}>
         <Text>Spurs are the best - FACT!</Text>
       </View>
-    )
+    );
   }
 }
 

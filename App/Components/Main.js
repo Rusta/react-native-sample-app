@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet
+} from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPostsRequest, fetchPosts, clearPosts } from '../actions';
@@ -14,26 +21,25 @@ class App extends Component {
     this.goToSpursFacts = this.goToSpursFacts.bind(this);
   }
 
-  refresh(){
+  refresh() {
     this.props.fetchPostsRequest()
-    .then(()=>{
+    .then(() => {
         this.props.fetchPosts();
     });
   }
 
-  clear(){
+  clear() {
     this.props.clearPosts();
   }
 
-  goToSpursFacts(){
+  goToSpursFacts() {
     this.props.navigator.push({
-        title: "Spurs Facts",
+        title: 'Spurs Facts',
         component: SpursFacts
     });
   }
 
-  renderPost = ({id, title, body}, i) => {
-    return (
+  renderPost = ({ id, title, body }, i) => (
       <View
         key={id}
         style={styles.post}
@@ -52,16 +58,16 @@ class App extends Component {
           </Text>
         </View>
       </View>
-    );
-  }
+  )
 
   render() {
-    const {posts, loading, error} = this.props;
+    const { posts, loading, error } = this.props;
+    const isAnimating = true;
 
     if (loading) {
       return (
         <View style={styles.center}>
-          <ActivityIndicator animating={true} />
+          <ActivityIndicator animating={isAnimating} />
         </View>
       );
     }
@@ -107,7 +113,6 @@ class App extends Component {
         </TouchableOpacity>
       </View>
     );
-
   }
 }
 
@@ -150,16 +155,13 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) => ({
     loading: state.loading,
     error: state.error,
     posts: state.posts,
-  }
-};
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ fetchPostsRequest, fetchPosts, clearPosts }, dispatch);
-};
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ fetchPostsRequest, fetchPosts, clearPosts }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

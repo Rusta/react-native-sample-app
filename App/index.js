@@ -7,7 +7,7 @@ import {
 import Main from './Components/Main';
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     backgroundColor: '#111111'
   },
@@ -21,7 +21,8 @@ export default class App extends Component {
         initialRoute={{
           title: 'Sample App',
           component: Main
-        }} />
+        }}
+      />
     );
   }
 }
