@@ -3,6 +3,7 @@ import { View, Text, ActivityIndicator, ScrollView, TouchableOpacity, StyleSheet
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPostsRequest, fetchPosts, clearPosts } from '../actions';
+import SpursFacts from './SpursFacts';
 
 class App extends Component {
 
@@ -10,6 +11,7 @@ class App extends Component {
     this.props.fetchPosts();
     this.clear = this.clear.bind(this);
     this.refresh = this.refresh.bind(this);
+    this.goToSpursFacts = this.goToSpursFacts.bind(this);
   }
 
   refresh(){
@@ -21,6 +23,13 @@ class App extends Component {
 
   clear(){
     this.props.clearPosts();
+  }
+
+  goToSpursFacts(){
+    this.props.navigator.push({
+        title: "Spurs Facts",
+        component: SpursFacts
+    });
   }
 
   renderPost = ({id, title, body}, i) => {
@@ -86,6 +95,14 @@ class App extends Component {
         >
           <Text>
             Clear
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={this.goToSpursFacts}
+        >
+          <Text>
+            Spurs Facts
           </Text>
         </TouchableOpacity>
       </View>
