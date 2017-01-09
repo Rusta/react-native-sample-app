@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
 import { fetchPostsRequest, fetchPosts, clearPosts } from '../actions';
-import SpursFacts from './SpursFacts';
 
 class App extends Component {
 
@@ -33,10 +33,7 @@ class App extends Component {
   }
 
   goToSpursFacts() {
-    this.props.navigator.push({
-        title: 'Spurs Facts',
-        component: SpursFacts
-    });
+    Actions.spursFacts({});
   }
 
   renderPost = ({ id, title, body }, i) => (
@@ -119,7 +116,6 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30,
   },
   post: {
     flexDirection: 'row',
