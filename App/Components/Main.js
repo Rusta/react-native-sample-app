@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   goToSpursFacts() {
-    Actions.spursFacts({});
+    Actions.spursFacts({ backTitle: 'Sample App' });
   }
 
   renderPost = ({ id, title, body }, i) => (
