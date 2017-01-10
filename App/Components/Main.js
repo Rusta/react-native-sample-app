@@ -10,6 +10,7 @@ import {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
+import * as colors from '../config/colors';
 import { fetchPostsRequest, fetchPosts, clearPosts } from '../actions';
 
 class App extends Component {
@@ -47,7 +48,7 @@ class App extends Component {
           </Text>
         </View>
         <View style={styles.postContent}>
-          <Text>
+          <Text style={styles.postTitle}>
             {title}
           </Text>
           <Text style={styles.postBody}>
@@ -132,10 +133,13 @@ const styles = StyleSheet.create({
     paddingVertical: 25,
     paddingRight: 15,
   },
+  postTitle: {
+    color: colors.text,
+  },
   postBody: {
     marginTop: 10,
     fontSize: 12,
-    color: 'lightgray',
+    color: colors.subText,
   },
   center: {
     flex: 1,
