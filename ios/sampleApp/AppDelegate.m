@@ -9,6 +9,10 @@
 
 #import "AppDelegate.h"
 
+/* Modified to support react-native-navigation - START */
+#import "RCCManager.h"
+/* Modified to support react-native-navigation - END */
+
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
 
@@ -18,6 +22,8 @@
 {
   NSURL *jsCodeLocation;
 
+  /* Modified to support react-native-navigation - COMMENT OUT ORIGINAL CODE - START */
+  /*
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
@@ -31,6 +37,21 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  */
+  /* Modified to support react-native-navigation - COMMENT OUT ORIGINAL CODE - END */
+  
+  /* Modified to support react-native-navigation - NEW CODE - START */
+  #ifdef DEBUG
+    jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
+  #else
+    jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  #endif
+  
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  self.window.backgroundColor = [UIColor whiteColor];
+  [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation];
+  /* Modified to support react-native-navigation - NEW CODE - END */
+  
   return YES;
 }
 
