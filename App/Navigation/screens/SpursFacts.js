@@ -5,8 +5,9 @@ import {
   TabNavigation,
   TabNavigationItem as TabItem,
 } from '@exponent/ex-navigation';
-import { StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
+import * as colors from '../../config/colors';
 import SpursCrest from '../../Components/SpursCrest';
 import SpursHonours from '../../Components/SpursHonours';
 import SpursTeam from '../../Components/SpursTeam';
@@ -17,11 +18,25 @@ const Router = createRouter(() => ({
   spursTeam: () => SpursTeam,
 }));
 
+
+function getColor(isSelected) {
+  return isSelected ? 'white' : '#000';
+}
+
 export default class SpursFacts extends Component {
   static route = {
     navigationBar: {
       title: 'Spurs Facts',
     }
+  }
+
+
+  renderTitle = (isSelected, title) => {
+    return (
+      <Text style={{ color: getColor(isSelected) }}>
+        {title}
+      </Text>
+    );
   }
 
   render() {
@@ -35,6 +50,7 @@ export default class SpursFacts extends Component {
           id="spursCrest"
           title="Crest"
           selectedStyle={styles.selectedTab}
+          renderTitle={this.renderTitle}
         >
           <StackNavigation
             id="spursCrest"
@@ -47,6 +63,7 @@ export default class SpursFacts extends Component {
           id="spursHonours"
           title="Honours"
           selectedStyle={styles.selectedTab}
+          renderTitle={this.renderTitle}
         >
           <StackNavigation
             id="spursHonours"
@@ -58,6 +75,7 @@ export default class SpursFacts extends Component {
           id="spursTeam"
           title="Team"
           selectedStyle={styles.selectedTab}
+          renderTitle={this.renderTitle}
         >
           <StackNavigation
             id="spursTeam"
@@ -73,5 +91,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 50,
-  }
+  },
+  selectedTab: {
+    backgroundColor: colors.main,
+  },
+  selectedTitleText: {
+    color: 'white',
+  },
 });
