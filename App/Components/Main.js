@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Actions } from 'react-native-router-flux';
+//import { Actions } from 'react-native-router-flux';
 import * as colors from '../config/colors';
 import { fetchPostsRequest, fetchPosts, clearPosts } from '../actions';
 
@@ -34,7 +34,8 @@ class App extends Component {
   }
 
   goToSpursFacts() {
-    Actions.spursFacts({ backTitle: 'Sample App' });
+    console.log('Go To Spurs Facts');
+    //Actions.spursFacts({ backTitle: 'Sample App' });
   }
 
   renderPost = ({ id, title, body }, i) => (
@@ -99,14 +100,6 @@ class App extends Component {
         >
           <Text>
             Clear
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={this.goToSpursFacts}
-        >
-          <Text>
-            Spurs Facts
           </Text>
         </TouchableOpacity>
       </View>

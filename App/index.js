@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
-import Router from './Router';
+import Navigation from './Navigation';
 
 export default class App extends Component {
   componentWillMount() {
@@ -8,7 +8,7 @@ export default class App extends Component {
   }
   render() {
     return (
-      <Router />
+      <Navigation />
     );
   }
 }
