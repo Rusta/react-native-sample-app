@@ -9,17 +9,15 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-//import { Actions } from 'react-native-router-flux';
 import * as colors from '../config/colors';
 import { fetchPostsRequest, fetchPosts, clearPosts } from '../actions';
 
-class App extends Component {
+class Main extends Component {
 
   componentWillMount() {
     this.props.fetchPosts();
     this.clear = this.clear.bind(this);
     this.refresh = this.refresh.bind(this);
-    this.goToSpursFacts = this.goToSpursFacts.bind(this);
   }
 
   refresh() {
@@ -31,11 +29,6 @@ class App extends Component {
 
   clear() {
     this.props.clearPosts();
-  }
-
-  goToSpursFacts() {
-    console.log('Go To Spurs Facts');
-    //Actions.spursFacts({ backTitle: 'Sample App' });
   }
 
   renderPost = ({ id, title, body }, i) => (
@@ -60,7 +53,7 @@ class App extends Component {
   )
 
   render() {
-    const { posts, loading, error } = this.props;
+    const { posts, loading, error, goToSpursFacts } = this.props;
     const isAnimating = true;
 
     if (loading) {
@@ -100,6 +93,14 @@ class App extends Component {
         >
           <Text>
             Clear
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={goToSpursFacts}
+        >
+          <Text>
+            Spurs Facts
           </Text>
         </TouchableOpacity>
       </View>
@@ -157,4 +158,4 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ fetchPostsRequest, fetchPosts, clearPosts }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
