@@ -7,6 +7,7 @@ import {
   Alert,
   Platform
 } from 'react-native';
+import Main from '../Components/Main';
 
 import { Navigation } from 'react-native-navigation';
 
@@ -14,8 +15,8 @@ export default class MainScreen extends Component {
 
     render() {
       return (
-        <Text>The Main Screen</Text>
-      )
+        <Main />
+      );
     }
 }
 

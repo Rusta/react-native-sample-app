@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Actions } from 'react-native-router-flux';
+// import { Actions } from 'react-native-router-flux';
 import * as colors from '../config/colors';
 import { fetchPostsRequest, fetchPosts, clearPosts } from '../actions';
 
@@ -34,7 +34,8 @@ class App extends Component {
   }
 
   goToSpursFacts() {
-    Actions.spursFacts({ backTitle: 'Sample App' });
+    console.log('GO TO SPURS FACTS');
+    //Actions.spursFacts({ backTitle: 'Sample App' });
   }
 
   renderPost = ({ id, title, body }, i) => (
