@@ -6,6 +6,7 @@ import {
   TabNavigationItem as TabItem,
 } from '@exponent/ex-navigation';
 import { Text, StyleSheet } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import * as colors from '../../config/colors';
 import SpursCrest from '../../Components/SpursCrest';
@@ -22,6 +23,12 @@ const Router = createRouter(() => ({
 function getColor(isSelected) {
   return isSelected ? 'white' : '#000';
 }
+
+function getIcon(isSelected, icon) {
+  return isSelected ? icon : `${icon}-outline`;
+}
+
+const tabIconSize = 24;
 
 export default class SpursFacts extends Component {
   static route = {
@@ -48,9 +55,15 @@ export default class SpursFacts extends Component {
       >
         <TabItem
           id="spursCrest"
-          title="Crest"
+          title="Badge"
           selectedStyle={styles.selectedTab}
           renderTitle={this.renderTitle}
+          renderIcon={(isSelected) =>
+            <Ionicons
+              name={getIcon(isSelected, 'ios-football')}
+              size={tabIconSize}
+              color={getColor(isSelected)}
+            />}
         >
           <StackNavigation
             id="spursCrest"
@@ -64,6 +77,12 @@ export default class SpursFacts extends Component {
           title="Honours"
           selectedStyle={styles.selectedTab}
           renderTitle={this.renderTitle}
+          renderIcon={(isSelected) =>
+            <Ionicons
+              name={getIcon(isSelected, 'ios-trophy')}
+              size={tabIconSize}
+              color={getColor(isSelected)}
+            />}
         >
           <StackNavigation
             id="spursHonours"
@@ -76,6 +95,12 @@ export default class SpursFacts extends Component {
           title="Team"
           selectedStyle={styles.selectedTab}
           renderTitle={this.renderTitle}
+          renderIcon={(isSelected) =>
+            <Ionicons
+              name={getIcon(isSelected, 'ios-shirt')}
+              size={tabIconSize}
+              color={getColor(isSelected)}
+            />}
         >
           <StackNavigation
             id="spursTeam"
@@ -94,8 +119,5 @@ const styles = StyleSheet.create({
   },
   selectedTab: {
     backgroundColor: colors.main,
-  },
-  selectedTitleText: {
-    color: 'white',
-  },
+  }
 });
