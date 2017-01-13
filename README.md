@@ -1,7 +1,39 @@
 # react-native-sample-app
 Playpen for React Native App - POCs etc
 
-## Initial Set Up
+## 3rd party plugins
+
+- [@exponent/ex-navigation](https://github.com/exponent/ex-navigation)
+- [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+
+## Run the app
+
+Ensure you have the React Native local environ dependencies installed (e.g. XCode and Android Studio - [link to getting started](https://facebook.github.io/react-native/docs/getting-started.html) )
+
+### iOS
+
+No need to open XCode, just run:
+
+```
+$ react-native run-ios
+```
+
+### Android
+
+Open android virtual device manager
+
+```
+$ android avd
+```
+
+Start a simulator from the device manager, then run the below
+
+```
+$ react-native run-android
+```
+
+
+## In the beginning
 
 The initial app was created on 4th Jan 2017 following the guidelines on
 
